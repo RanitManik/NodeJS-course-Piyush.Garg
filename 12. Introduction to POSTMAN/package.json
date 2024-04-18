@@ -1,0 +1,14 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "description": "This project is for making REST API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "RANIT MANIK",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
