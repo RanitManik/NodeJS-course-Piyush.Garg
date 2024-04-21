@@ -15,7 +15,7 @@ async function handleGenerateNewShortURL(req, res) {
     return res.json({shortID: shortID});
 }
 
-async function handleNewShortURL(req, res) {
+async function handleRedirectNewShortURL(req, res) {
     const shortID = req.params.shortID;
     const entry = await URL.findOneAndUpdate({
         shortID,
@@ -28,11 +28,24 @@ async function handleNewShortURL(req, res) {
     });
 
     if (!entry || !entry.redirectURL) {
-        return res.status(404).send({ error: 'URL not found' });
+        return res.status(404).send({error: 'URL not found'});
     }
 
     res.redirect(entry.redirectURL);
 }
 
+async function handleAnalyticsURL(req, res) {
+    const shortID = req.params.shortID;
+    const result = await URL.findOne({shortID});
+    return res.json({
+        totalClicks: result.visitHistory.length,
+        analytics: result.visitHistory
+    });
+}
 
-module.exports = {handleGenerateNewShortURL, handleNewShortURL};
+
+module.exports = {
+    handleGenerateNewShortURL,
+    handleRedirectNewShortURL,
+    handleAnalyticsURL
+};
