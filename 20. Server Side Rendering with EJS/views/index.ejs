@@ -5,7 +5,6 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3214/3214679.png" type="image/x-icon">
     <style>
         body {
@@ -16,7 +15,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
         .container {
@@ -134,7 +132,6 @@
     <div class="shortenedUrl">
         <% if (locals.id) { %>
             <label for="shortenedUrlOutput">Shortened URL:</label>
-            <input placeholder="https://www.example.com" readonly type="url" id="shortenedUrlOutput"
                    value="http://localhost:4000/url/<%= id %>">
         <% } %>
     </div>
