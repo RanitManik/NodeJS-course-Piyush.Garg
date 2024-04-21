@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3214/3214679.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: min(40rem, 90%);
+            padding: 1.25rem;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.3125rem;
+            color: #555;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 0.625rem;
+            font-size: 1rem;
+            border: 0.0625rem solid #ddd;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 0.625rem;
+            margin-top: 0.625rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="submit"]:active {
+            background-color: #3e98ff;
+        }
+
+        .shortenedUrl {
+            margin-top: 1.25rem;
+        }
+
+        .shortenedUrl input {
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+        }
+
+        /* Table styles */
+        .tableContainer {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Alternate row color */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Hover effect */
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        td:last-child, td:first-child {
+            text-align: center;
+        }
+
+        td:nth-child(2) {
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <h1>URL Shortener</h1>
+    <form id="urlShortenerForm" method="post" action="/url">
+        <label for="originalUrl">Enter URL:</label>
+        <input placeholder="https://www.example.com" type="url" id="originalUrl" name="url" required>
+        <button type="submit">Shorten URL</button>
+    </form>
+    <div class="shortenedUrl">
+        <% if (locals.id) { %>
+            <label for="shortenedUrlOutput">Shortened URL:</label>
+            <input placeholder="https://www.example.com" readonly type="url" id="shortenedUrlOutput"
+                   value="http://localhost:4000/url/<%= id %>">
+        <% } %>
+    </div>
+    <div class="tableContainer">
+        <% if(locals.urls){ %>
+            <table>
+                <thead>
+                <th>S.no</th>
+                <th>Short ID</th>
+                <th>Redirect</th>
+                <th>Clicks</th>
+                </thead>
+                <tbody>
+                <% urls.forEach((url, index) => { %>
+                    <tr>
+                        <td>
+                            <%= index + 1 %>
+                        </td>
+                        <td>
+                            <%= url.shortID %>
+                        </td>
+                        <td>
+                            <%= url.redirectURL %>
+                        </td>
+                        <td>
+                            <%= url.visitHistory.length %>
+                        </td>
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</main>
+</body>
+</html>
