@@ -13,9 +13,8 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: grid;
+            place-items: center;
             min-height: 100vh;
         }
 
@@ -80,6 +79,7 @@
 
         .shortenedUrl input {
             font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            margin-bottom: 1.5rem;
         }
 
         /* Table styles */
@@ -122,12 +122,15 @@
         td:nth-child(2) {
             font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
         }
+        th:first-child, th:last-child {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <main class="container">
     <h1>URL Shortener</h1>
-    <form id="urlShortenerForm" method="post" action="/url">
+    <form id="urlShortenerForm" method="post" action="/home">
         <label for="originalUrl">Enter URL:</label>
         <input placeholder="https://www.example.com" type="url" id="originalUrl" name="url" required>
         <button type="submit">Shorten URL</button>
@@ -135,7 +138,7 @@
     <div class="shortenedUrl">
         <% if (locals.id) { %>
             <label for="shortenedUrlOutput">Shortened URL:</label>
-            <input id="shortenedUrlOutput" type="url" value="http://localhost:4000/url/<%= id %>">
+            <input id="shortenedUrlOutput" type="url" value="http://localhost:5000/url/<%= id %>">
         <% } %>
     </div>
     <div class="tableContainer">
