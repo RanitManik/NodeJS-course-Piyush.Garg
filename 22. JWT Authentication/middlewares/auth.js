@@ -12,4 +12,10 @@ async function authenticate(req, res, next) {
   next();
 }
 
-module.exports = {authenticate};
+async function checkAuthentication(req, res, next) {
+  const userUID = req.cookies?.uid;
+  req.user = getUser(userUID);
+  next();
+}
+
+module.exports = {authenticate, checkAuthentication};

@@ -10,12 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.7",
+    "cookie-parser": "^1.4.6",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2",
     "nodemon": "^3.1.0",
     "shortid": "^2.2.16",
-    "uuidv4": "^6.2.13"
+    "uuid": "^9.0.1"
   }
 }

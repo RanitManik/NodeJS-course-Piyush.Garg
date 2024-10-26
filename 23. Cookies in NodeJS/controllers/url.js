@@ -7,15 +7,13 @@ async function handleGenerateNewShortURL(req, res) {
     return res.status(400).send({error: 'URL is missing'});
   }
   const shortID = shortid();
-  const allURLs = await URL.find({createdBy: req.user._id});
+  const allURLs = await URL.find({});
   await URL.create({
     shortID: shortID,
     redirectURL: body.url,
     visitHistory: [],
     createdBy: req.user._id,
   });
-
-  delete req.body.url;
   return res.render("index", {
     id: shortID,
     urls: allURLs,
