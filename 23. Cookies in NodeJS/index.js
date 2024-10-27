@@ -6,7 +6,7 @@ const {connectMongoDB} = require('./connect')
 const urlRoute = require('./routes/url');
 const staticRoute = require('./routes/staticRouter');
 const userRoute = require('./routes/user');
-const {authenticate, checkAuthentication} = require('./middlewares/auth');
+const {restrictToLoggedInUsersOnly, checkAuthentication} = require('./middlewares/auth');
 
 const app = express();
 const PORT = 5000;
@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 app.use("/", staticRoute);
 app.use("/", userRoute);
-app.use("/url", authenticate, urlRoute);
+app.use("/url", restrictToLoggedInUsersOnly, urlRoute);
 app.use("/home", checkAuthentication, staticRoute);
 
 app.listen(PORT, () => {
