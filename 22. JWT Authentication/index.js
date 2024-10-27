@@ -28,10 +28,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 
-app.use("/", staticRoute);
-app.use("/", userRoute);
 app.use("/url", authenticate, urlRoute);
-app.use("/home", checkAuthentication, staticRoute);
+app.use("/", userRoute);
+app.use("/", checkAuthentication, staticRoute);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

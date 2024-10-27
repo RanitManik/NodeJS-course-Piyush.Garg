@@ -2,29 +2,37 @@ const URL = require('../models/url');
 const router = require("./url");
 
 router.get('/home', async (req, res) => {
-  if (!req.user) return res.redirect('/login');
-  const allURLs = await URL.find({ createdBy: req.user._id });
+  if (!req.user) {
+    res.redirect('/login');
+  }
+  const URLsCreatedByUser = await URL.find({createdBy: req.user?._id});
   res.render('index', {
-    urls: allURLs,
+    urls: URLsCreatedByUser,
   });
 });
 
 router.get('/', (req, res) => {
-  res.redirect('signup');
+  if (!req.user) {
+    res.redirect('/login');
+  } else {
+    res.redirect('/home');
+  }
 });
 
 router.get('/signup', async (req, res) => {
-  const allURLs = await URL.find({});
-  return res.render('signup', {
-    urls: allURLs,
-  });
+  if (!req.user) {
+    return res.render('signup');
+  } else {
+    res.redirect('/home');
+  }
 });
 
 router.get('/login', async (req, res) => {
-  const allURLs = await URL.find({});
-  return res.render('login', {
-    urls: allURLs,
-  });
+  if (!req.user) {
+    return res.render('login');
+  } else {
+    res.redirect('/home');
+  }
 });
 
 
