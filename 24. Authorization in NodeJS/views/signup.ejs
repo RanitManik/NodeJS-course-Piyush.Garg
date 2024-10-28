@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .container {
+            min-width: min(30rem, 90%);
+            padding: 1.25rem /* 20/16 */;
+            background-color: #fff;
+            border-radius: 0.5rem /* 8/16 */;
+            box-shadow: 0 0.125rem /* 2/16 */ 0.25rem /* 4/16 */ rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.25rem /* 20/16 */;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem /* 20/16 */;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.625rem /* 10/16 */;
+            font-size: 1rem /* 16/16 */;
+            border: 0.0625rem /* 1/16 */ solid #ccc;
+            border-radius: 0.25rem /* 4/16 */;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.625rem /* 10/16 */;
+            font-size: 1rem /* 16/16 */;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem /* 4/16 */;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 1.25rem /* 20/16 */;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <h1>Sign Up</h1>
+    <form id="signupForm" method="post" action="/signup">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+</main>
+</body>
+</html>
