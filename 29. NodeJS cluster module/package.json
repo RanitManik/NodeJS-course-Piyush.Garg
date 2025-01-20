@@ -1,0 +1,14 @@
+{
+  "name": "clustur-module",
+  "version": "1.0.0",
+  "description": "Welcome to the Node.js Bootcamp by Piyush Garg! This repository contains the source code and notes for the bootcamp, organized into sections corresponding to the videos in the [Master NodeJS playlist](https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo) on [Piyush Garg's YouTube channel](https://www.youtube.com/@piyushgargdev).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
